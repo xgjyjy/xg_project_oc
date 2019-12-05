@@ -1,0 +1,39 @@
+platform :ios, '9.0'
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+inhibit_all_warnings!
+
+def commonPod
+    pod 'AMap3DMap-NO-IDFA', '~>6.9.0'#高德地图
+    pod 'AMapSearch-NO-IDFA', '~>6.9.0'#高德地图
+    pod 'AMapLocation-NO-IDFA', '~>2.6.2'#高德地图
+    pod 'UMCSecurityPlugins', '~>1.0.6'#友盟统计
+    pod 'UMCCommon', '~>2.1.1'#友盟统计
+    pod 'UMCShare/UI', '~>6.9.6'#友盟分享
+    pod 'UMCShare/Social/ReducedWeChat', '~>6.9.6'# 集成微信(精简版0.2M)
+    pod 'UMCAnalytics', '~>6.0.5'#友盟统计
+    pod 'UMCCommonLog', '~>1.0.0'#友盟日志(用于打印友盟埋点和crash日志)
+    pod 'JPush', '~>3.2.6'#极光推送
+    pod 'Masonry', '~>1.1.0'
+    pod 'SDCycleScrollView', '~>1.75'
+    pod 'SDWebImage', '~>4.4.1'
+    pod 'AFNetworking', '~>3.2.1'
+    pod 'MBProgressHUD', '~>1.1.0'
+    pod 'MJRefresh', '~>3.1.15.3'
+    pod 'IQKeyboardManager', '~>6.2.0'
+    pod 'YYKit', '~>1.0.9'
+    #pod 'WCDB', '~>1.0.7.5'#数据库
+    pod 'Bugly', '~>2.5.0'#腾讯crash日志上传
+    #pod 'NIMSDK_LITE', '~>5.8.0'#网易云信精简版(不含直播等音视频功能)
+    #pod 'M80AttributedLabel', '~>1.7.1'
+    pod 'TZImagePickerController', '~>3.1.2'#图片选择器
+end
+
+target 'XG_Project_OC' do
+  commonPod
+end
+
+target 'XG_Project_OC_Dev' do
+  commonPod
+end
