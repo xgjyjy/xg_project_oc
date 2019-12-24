@@ -12,7 +12,7 @@
 
 #pragma mark - Title
 
-- (void)setxg_normalTitle:(NSString *)xg_normalTitle {
+- (void)setXg_normalTitle:(NSString *)xg_normalTitle {
     [self setTitle:xg_normalTitle forState:UIControlStateNormal];
 }
 
@@ -20,7 +20,7 @@
     return [self titleForState:UIControlStateNormal];
 }
 
-- (void)setxg_highlightedTitle:(NSString *)xg_highlightedTitle {
+- (void)setXg_highlightedTitle:(NSString *)xg_highlightedTitle {
     [self setTitle:xg_highlightedTitle forState:UIControlStateHighlighted];
 }
 
@@ -28,7 +28,7 @@
     return [self titleForState:UIControlStateHighlighted];
 }
 
-- (void)setxg_disabledTitle:(NSString *)xg_disabledTitle {
+- (void)setXg_disabledTitle:(NSString *)xg_disabledTitle {
     [self setTitle:xg_disabledTitle forState:UIControlStateDisabled];
 }
 
@@ -36,8 +36,8 @@
     return [self titleForState:UIControlStateDisabled];
 }
 
-- (void)setxg_selectedTitle:(NSString *)xg_selectedTitle {
-    [self setxg_selectedTitle:xg_selectedTitle];
+- (void)setXg_selectedTitle:(NSString *)xg_selectedTitle {
+    [self setXg_selectedTitle:xg_selectedTitle];
 }
 
 - (NSString *)xg_selectedTitle {
@@ -47,7 +47,7 @@
 
 #pragma mark - TitleColor
 
-- (void)setxg_normalTitleColor:(UIColor *)xg_normalTitleColor {
+- (void)setXg_normalTitleColor:(UIColor *)xg_normalTitleColor {
     [self setTitleColor:xg_normalTitleColor forState:UIControlStateNormal];
 }
 
@@ -55,7 +55,7 @@
     return [self titleColorForState:UIControlStateNormal];
 }
 
-- (void)setxg_highlightedTitleColor:(UIColor *)xg_highlightedTitleColor {
+- (void)setXg_highlightedTitleColor:(UIColor *)xg_highlightedTitleColor {
     [self setTitleColor:xg_highlightedTitleColor forState:UIControlStateHighlighted];
 }
 
@@ -63,7 +63,7 @@
     return [self titleColorForState:UIControlStateHighlighted];
 }
 
-- (void)setxg_disabledTitleColor:(UIColor *)xg_disabledTitleColor {
+- (void)setXg_disabledTitleColor:(UIColor *)xg_disabledTitleColor {
     [self setTitleColor:xg_disabledTitleColor forState:UIControlStateDisabled];
 }
 
@@ -71,7 +71,7 @@
     return [self titleColorForState:UIControlStateDisabled];
 }
 
-- (void)setxg_selectedTitleColor:(UIColor *)xg_selectedTitleColor {
+- (void)setXg_selectedTitleColor:(UIColor *)xg_selectedTitleColor {
     [self setTitleColor:xg_selectedTitleColor forState:UIControlStateSelected];
 }
 
@@ -81,7 +81,7 @@
 
 #pragma mark - Image
 
-- (void)setxg_normalImage:(UIImage *)xg_normalImage {
+- (void)setXg_normalImage:(UIImage *)xg_normalImage {
     [self setImage:xg_normalImage forState:UIControlStateNormal];
 }
 
@@ -89,7 +89,7 @@
     return [self imageForState:UIControlStateNormal];
 }
 
-- (void)setxg_highlightedImage:(UIImage *)xg_highlightedImage {
+- (void)setXg_highlightedImage:(UIImage *)xg_highlightedImage {
     [self setImage:xg_highlightedImage forState:UIControlStateHighlighted];
 }
 
@@ -97,7 +97,7 @@
     return [self imageForState:UIControlStateHighlighted];
 }
 
-- (void)setxg_disabledImage:(UIImage *)xg_disabledImage {
+- (void)setXg_disabledImage:(UIImage *)xg_disabledImage {
     [self setImage:xg_disabledImage forState:UIControlStateDisabled];
 }
 
@@ -105,7 +105,7 @@
     return [self imageForState:UIControlStateDisabled];
 }
 
-- (void)setxg_selectedImage:(UIImage *)xg_selectedImage {
+- (void)setXg_selectedImage:(UIImage *)xg_selectedImage {
     [self setImage:xg_selectedImage forState:UIControlStateSelected];
 }
 
@@ -116,7 +116,7 @@
 
 #pragma mark - BackgroundImage
 
-- (void)setxg_normalBackgroundImage:(UIImage *)xg_normalBackgroundImage {
+- (void)setXg_normalBackgroundImage:(UIImage *)xg_normalBackgroundImage {
     [self setBackgroundImage:xg_normalBackgroundImage forState:UIControlStateNormal];
 }
 
@@ -124,7 +124,7 @@
     return [self backgroundImageForState:UIControlStateNormal];
 }
 
-- (void)setxg_highlightedBackgroundImage:(UIImage *)xg_highlightedBackgroundImage {
+- (void)setXg_highlightedBackgroundImage:(UIImage *)xg_highlightedBackgroundImage {
     [self setBackgroundImage:xg_highlightedBackgroundImage forState:UIControlStateHighlighted];
 }
 
@@ -132,7 +132,7 @@
     return [self backgroundImageForState:UIControlStateHighlighted];
 }
 
-- (void)setxg_disabledBackgroundImage:(UIImage *)xg_disabledBackgroundImage {
+- (void)setXg_disabledBackgroundImage:(UIImage *)xg_disabledBackgroundImage {
     [self setBackgroundImage:xg_disabledBackgroundImage forState:UIControlStateDisabled];
 }
 
@@ -140,7 +140,7 @@
     return [self backgroundImageForState:UIControlStateDisabled];
 }
 
-- (void)setxg_selectedBackgroundImage:(UIImage *)xg_selectedBackgroundImage {
+- (void)setXg_selectedBackgroundImage:(UIImage *)xg_selectedBackgroundImage {
     [self setBackgroundImage:xg_selectedBackgroundImage forState:UIControlStateSelected];
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import "NSObject+XGAdd.h"
-#import <YYKit/NSObject+YYModel.h>
+#import <NSObject+YYModel.h>
 #import <objc/runtime.h>
 
 @implementation NSObject (XGAdd)
@@ -35,7 +35,7 @@
 
 + (instancetype)xg_modelWithJSON:(id)json {
     if ([json xg_isNonnull]) {
-        return [self modelWithJSON:json];
+        return [self yy_modelWithJSON:json];
     } else {
         return nil;
     }
@@ -43,14 +43,14 @@
 
 + (NSArray *)xg_modelArrayWithJSON:(id)json {
     if ([json xg_isNonnull]) {
-        return [NSArray modelArrayWithClass:self.class json:json];
+        return [NSArray yy_modelArrayWithClass:self.class json:json];
     } else {
         return nil;
     }
 }
 
 - (NSString *)xg_JSONString {
-    return [self modelToJSONString];
+    return [self yy_modelToJSONString];
 }
 
 - (BOOL)xg_hasExistPropertyForName:(NSString *)name {

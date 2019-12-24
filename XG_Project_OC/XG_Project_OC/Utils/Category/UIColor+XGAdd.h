@@ -23,29 +23,29 @@ extern struct XGColorRef RGBBackgoundColor;
 @interface UIColor (XGAdd)
 
 /// hexString 转 UIColor 不支持RGBA 和 RRGGBBAA
-+ (UIColor *)colorWithHexString:(NSString *)hexStr;
-- (NSString *)RGBHexString;
++ (UIColor *)xg_colorWithHexString:(NSString *)hexStr;
 
-/// 主色A-1 #DD2534 用于整个APP内所有的红色, 如正文/标题等突出文字
-+ (UIColor *)mainColor_A1_DD2534;
-/// 主色A-2 #333333 用于一级文字信息
-+ (UIColor *)mainColor_A2_333333;
+- (NSString *)xg_RGBHexString;
 
-/// 辅色B-1 #FF7C31 用于辅助性颜色
-+ (UIColor *)minorColor_B1_FF7C31;
-/// 辅色B-2 #FAFAFA 用于背景色以及搜索框背景色等
-+ (UIColor *)minorColor_B2_FAFAFA;
-/// 辅色B-3 #EFEFEF 用于列表类分割线
-+ (UIColor *)minorColor_B3_EFEFEF;
-/// 辅色B-4 #F1F1F1 用于背景色以及搜索框背景色等
-+ (UIColor *)minorColor_B4_F1F1F1;
++ (UIColor *)xg_backgroundColor;
 
-/// 文字颜色C-1 #666666 用于二级文字信息, 如绑定公司/绑定门店等
-+ (UIColor *)textColor_C1_666666;
-/// 文字颜色C-2 #999999 用于三级文字信息, 如时间/解释类信息等
-+ (UIColor *)textColor_C2_999999;
-/// 文字颜色C-3 #CCCCCC 用于文本编辑前和不可点击文字
-+ (UIColor *)textColor_C3_CCCCCC;
++ (UIColor *)xg_contentColor;
+
++ (UIColor *)xg_separatorLineColor;
+
++ (UIColor *)xg_redColor;
+
++ (UIColor *)xg_orangeColor;
+
++ (UIColor *)xg_blueColor;
+
++ (UIColor *)xg_blackColor;
+
++ (UIColor *)xg_darkGrayColor;
+
++ (UIColor *)xg_grayColor;
+
++ (UIColor *)xg_lightGrayColor;
 
 @end
 

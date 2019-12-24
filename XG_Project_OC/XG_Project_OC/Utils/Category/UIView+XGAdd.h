@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param url 图片URLString
  @param placeholderImage 占位图
  */
-- (void)hb_setImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholderImage;
+- (void)xg_setImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholderImage;
 
 /**
  为UIButton.normalState 或 UIImageView 设置图片
@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param url 图片URLString
  @param placeholderImageName 占图片名
  */
-- (void)hb_setImageWithURL:(NSString *)url placeholderImageName:(NSString *)placeholderImageName;
+- (void)xg_setImageWithURL:(NSString *)url placeholderImageName:(NSString *)placeholderImageName;
 
 
 /**
@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param url 图片URLString
  @param placeholderImage 占位图
  */
-- (void)hb_setBackgroundImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholderImage;
+- (void)xg_setBackgroundImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholderImage;
 
 /**
  为normalState的UIButton 或 UIImageView 设置背景图片
@@ -54,12 +54,12 @@ NS_ASSUME_NONNULL_BEGIN
  @param url 图片URLString
  @param placeholderImageName 占位图名
  */
-- (void)hb_setBackgroundImageWithURL:(NSString *)url placeholderImageName:(NSString *)placeholderImageName;
+- (void)xg_setBackgroundImageWithURL:(NSString *)url placeholderImageName:(NSString *)placeholderImageName;
 
 /**
  设置头像, 带默认placeholder
  */
-- (void)hb_setAvatarImageWithURL:(NSString *)url;
+- (void)xg_setAvatarImageWithURL:(NSString *)url;
 
 /**
  给view添加指定边框

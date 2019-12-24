@@ -50,7 +50,7 @@ static BOOL hexStrToRGBA(NSString *str,
     return YES;
 }
 
-+ (UIColor *)colorWithHexString:(NSString *)hexStr {
++ (UIColor *)xg_colorWithHexString:(NSString *)hexStr {
     CGFloat r, g, b, a;
     if (hexStrToRGBA(hexStr, &r, &g, &b, &a)) {
         return [UIColor colorWithRed:r green:g blue:b alpha:a];
@@ -58,7 +58,7 @@ static BOOL hexStrToRGBA(NSString *str,
     return [UIColor clearColor];
 }
 
-- (NSString *)RGBHexString {
+- (NSString *)xg_RGBHexString {
     CGColorRef CGColor = CGColorCreateCopy(self.CGColor);
     NSString *hexString = nil;
     
@@ -89,40 +89,44 @@ static BOOL hexStrToRGBA(NSString *str,
     return hexString;
 }
 
-+ (UIColor *)mainColor_A1_DD2534 {
-    return [self colorWithHexString:@"#DD2534"];
++ (UIColor *)xg_backgroundColor {
+    return [self xg_colorWithHexString:@"EFEFEF"];
 }
 
-+ (UIColor *)mainColor_A2_333333 {
-    return [self colorWithHexString:@"#333333"];
++ (UIColor *)xg_contentColor {
+    return [self xg_colorWithHexString:@"FFFFFF"];
 }
 
-+ (UIColor *)minorColor_B1_FF7C31 {
-    return [self colorWithHexString:@"#FF7C31"];
++ (UIColor *)xg_separatorLineColor {
+    return [self xg_colorWithHexString:@"EAEAEA"];
 }
 
-+ (UIColor *)minorColor_B2_FAFAFA {
-    return [self colorWithHexString:@"#FAFAFA"];
++ (UIColor *)xg_redColor {
+    return [self xg_colorWithHexString:@"DD2534"];
 }
 
-+ (UIColor *)minorColor_B3_EFEFEF {
-    return [self colorWithHexString:@"#EFEFEF"];
++ (UIColor *)xg_orangeColor {
+    return [self xg_colorWithHexString:@"FF9D17"];
 }
 
-+ (UIColor *)minorColor_B4_F1F1F1 {
-    return [self colorWithHexString:@"#F1F1F1"];
++ (UIColor *)xg_blueColor {
+    return [self xg_colorWithHexString:@"2484FF"];
 }
 
-+ (UIColor *)textColor_C1_666666 {
-    return [self colorWithHexString:@"#666666"];
++ (UIColor *)xg_blackColor {
+    return [self xg_colorWithHexString:@"333333"];
 }
 
-+ (UIColor *)textColor_C2_999999 {
-    return [self colorWithHexString:@"#999999"];
++ (UIColor *)xg_darkGrayColor {
+    return [self xg_colorWithHexString:@"656565"];
 }
 
-+ (UIColor *)textColor_C3_CCCCCC {
-    return [self colorWithHexString:@"#CCCCCC"];
++ (UIColor *)xg_grayColor {
+    return [self xg_colorWithHexString:@"939393"];
+}
+
++ (UIColor *)xg_lightGrayColor {
+    return [self xg_colorWithHexString:@"CCCCCC"];
 }
 
 @end

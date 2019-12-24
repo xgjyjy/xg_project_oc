@@ -10,13 +10,13 @@
 #import "XGNavigationController.h"
 #import "UIColor+XGAdd.h"
 
-@interface XZYBaseViewControllerContainerView : UIView
+@interface XGBaseViewControllerContainerView : UIView
 
 @property (nonatomic, weak) UIView *navbar;
 
 @end
 
-@implementation XZYBaseViewControllerContainerView
+@implementation XGBaseViewControllerContainerView
 
 - (void)addSubview:(UIView *)view {
     if (_navbar) {
@@ -33,16 +33,6 @@
         [super insertSubview:view aboveSubview:siblingSubview];
     }
 }
-
-//- (void)bringSubviewToFront:(UIView *)view {
-//    if (_navbar) {
-//        if ([view.superview isEqual:self]) {
-//            [super insertSubview:view belowSubview:_navbar];
-//        }
-//    } else {
-//        [super bringSubviewToFront:view];
-//    }
-//}
 
 - (void)sendSubviewToBack:(UIView *)view {
     if (![view isEqual:_navbar]) {
@@ -91,23 +81,23 @@
     } else {
         frame = CGRectMake(0, 0, self.preferredContentSize.width, self.preferredContentSize.height);
     }
-    self.view = [[XZYBaseViewControllerContainerView alloc] initWithFrame:frame];
+    self.view = [[XGBaseViewControllerContainerView alloc] initWithFrame:frame];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor xg_backgroundColor];
     [self.view addSubview:self.navigationBarView];
-    if ([self.view isKindOfClass:[XZYBaseViewControllerContainerView class]]) {
-        XZYBaseViewControllerContainerView *view = (XZYBaseViewControllerContainerView *)self.view;
+    if ([self.view isKindOfClass:[XGBaseViewControllerContainerView class]]) {
+        XGBaseViewControllerContainerView *view = (XGBaseViewControllerContainerView *)self.view;
         view.navbar = self.navigationBarView;
     }
-    _xzy_enableDragBack = YES;
+    _xg_enableDragBack = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self navigationControllerCanDragBack:_xzy_enableDragBack];
+    [self navigationControllerCanDragBack:_xg_enableDragBack];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -134,9 +124,9 @@
 }
 
 - (void)showNavigationBarViewShadow {
-    self.navigationBarView.layer.shadowColor = [[UIColor colorWithHexString:@"000000"] colorWithAlphaComponent:0.1].CGColor;
+    self.navigationBarView.layer.shadowColor = [[UIColor xg_colorWithHexString:@"000000"] colorWithAlphaComponent:0.1].CGColor;
     self.navigationBarView.layer.shadowOffset = CGSizeMake(0, 2);
-    self.navigationBarView.layer.shadowOpacity = 1;/**< 设置阴影的透明度 */
+    self.navigationBarView.layer.shadowOpacity = 1;
 }
 
 - (void)showNavigationBarLine {
@@ -157,9 +147,9 @@
     }
 }
 
-- (void)setXzy_enableDragBack:(BOOL)xzy_enableDragBack {
-    _xzy_enableDragBack = xzy_enableDragBack;
-    [self navigationControllerCanDragBack:xzy_enableDragBack];
+- (void)setXg_enableDragBack:(BOOL)xg_enableDragBack {
+    _xg_enableDragBack = xg_enableDragBack;
+    [self navigationControllerCanDragBack:xg_enableDragBack];
 }
 
 - (void)setTitleText:(NSString *)text {
@@ -193,8 +183,7 @@
 - (UIView *)navigationBarView {
     if(!_navigationBarView) {
         _navigationBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kContentY)];
-        _navigationBarView.backgroundColor = [UIColor whiteColor];
-        //        _navigationBarView.layer.zPosition = 1000;
+        _navigationBarView.backgroundColor = [UIColor xg_backgroundColor];
     }
     return _navigationBarView;
 }
@@ -202,8 +191,8 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _titleLabel.textColor = [UIColor colorWithHexString:@"333333"];
-        _titleLabel.font = [UIFont systemFontOfSize:18];
+        _titleLabel.textColor = [UIColor xg_blackColor];
+        _titleLabel.font = [UIFont xg_pingFangFontOfSize:18];
     }
     return _titleLabel;
 }
@@ -219,67 +208,10 @@
 
 - (UIView *)lineView {
     if (!_lineView) {
-        _lineView = [[UIView alloc] initWithFrame:CGRectMake(0, kContentY - 0.5, kScreenWidth, 0.5)];
-        _lineView.backgroundColor = [UIColor colorWithHexString:@"efefef"];
+        _lineView = [[UIView alloc] initWithFrame:CGRectMake(0, kContentY - 1, kScreenWidth, 1)];
+        _lineView.backgroundColor = [UIColor xg_separatorLineColor];
     }
     return _lineView;
-}
-
-#pragma mark - ErrorTipView
-
-//- (XZYErrorTipView *)errorTipView {
-//    if (!_errorTipView) {
-//        _errorTipView = [XZYErrorTipView new];
-//        _errorTipView.backgroundColor = [UIColor whiteColor];
-//        _errorTipView.delegate = self;
-//        _errorTipView.hidden = YES;
-//    }
-//    return _errorTipView;
-//}
-
-//- (void)showErrorTipViewWithType:(ErrorType)errorType {
-//    if (!self.errorTipView.superview) {
-//        [self.view insertSubview:self.errorTipView belowSubview:self.navigationBarView];
-//    } else {
-//        [self.view bringSubviewToFront:self.navigationBarView];
-//    }
-//
-//    if (CGRectEqualToRect(self.errorTipView.frame, CGRectZero)) {
-//        UIView *baba = self.errorTipView.superview;
-//        [self.errorTipView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//            make.left.top.equalTo(baba);
-//            make.width.equalTo(baba);
-//            make.height.equalTo(baba);
-//        }];
-//    }
-//
-//    self.errorTipView.hidden = NO;
-//    self.errorTipView.errorType = errorType;
-//}
-//
-//- (void)hideErrorTipView {
-//    self.errorTipView.hidden = YES;
-//}
-//
-//- (void)errorTipViewDidTappedRefreshButton {}
-
-#pragma mark - 自定义转场动画相关
-
-- (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion {
-    
-    UIPresentationController *presentationController NS_VALID_UNTIL_END_OF_SCOPE;
-    
-    /// 如果是二楼下拉动画, 会强制覆盖transitioningDelegate
-//    if ([viewControllerToPresent isKindOfClass:[XZYSecondFloorContainerController class]]) {
-//        presentationController = [[XZYSecondFloorPresentationController alloc] initWithPresentedViewController:viewControllerToPresent presentingViewController:self];
-//        viewControllerToPresent.transitioningDelegate = (XZYSecondFloorPresentationController *)presentationController;
-//    }
-//    else if ([viewControllerToPresent isKindOfClass:[XZYDialogController class]]) {
-//        presentationController = [[XZYDialogPresentationController alloc] initWithPresentedViewController:viewControllerToPresent presentingViewController:self];
-//        viewControllerToPresent.transitioningDelegate = (XZYDialogPresentationController *)presentationController;
-//    }
-    
-    [super presentViewController:viewControllerToPresent animated:flag completion:completion];
 }
 
 @end

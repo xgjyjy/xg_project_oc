@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) UILabel *titleLabel;
 
 ///左滑返回的开关
-@property (nonatomic, assign) BOOL xzy_enableDragBack;
+@property (nonatomic, assign) BOOL xg_enableDragBack;
 
 /**
  关闭scrollView自适应内边距
@@ -62,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param sender 返回按钮
  */
-- (void)navigationBarBackButtonClick:(UIButton *)sender;
+- (void)navigationBarBackButtonClick:(UIButton * _Nullable)sender;
 
 /**
  显示返回按钮

@@ -11,7 +11,7 @@
 
 @implementation NSAttributedString (XGAdd)
 
-+ (NSAttributedString *)setAttributedStringWithString:(NSString *)string configArray:(NSArray<XGAttributedConfig *> *)configArray {
++ (NSAttributedString *)setAttributedString:(NSString *)string configArray:(NSArray<XGAttributedConfig *> *)configArray {
     if (!configArray.xg_isArray) {
         return nil;
     }

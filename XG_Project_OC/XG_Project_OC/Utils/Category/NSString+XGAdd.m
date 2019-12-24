@@ -236,7 +236,7 @@
 }
 
 /// 将目标时间戳转成当前时区的时间戳
-+ (NSDate *)getYearMonthDay:(NSInteger)timeStamp {
++ (NSDate *)getYearMonthDay:(long long)timeStamp {
     if (timeStamp <= 0) {
         return nil;
     }

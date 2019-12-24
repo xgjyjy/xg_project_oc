@@ -44,4 +44,12 @@
 /// weakSelf
 #define kWeakSelf(weakSelf) __weak typeof(&*self)weakSelf = self;
 
+/// 是否是iponeX机型的刘海屏
+#define kIsLiuHaiping \
+({BOOL isLiuHaiping = NO;\
+if (@available(iOS 11.0, *)) {\
+isLiuHaiping = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
+}\
+(isLiuHaiping);})
+
 #endif /* XGMacroHeader_h */

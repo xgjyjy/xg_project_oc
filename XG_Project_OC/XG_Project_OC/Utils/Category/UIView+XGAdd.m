@@ -117,7 +117,7 @@
     self.frame = frame;
 }
 
-- (void)hb_setImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholderImage {
+- (void)xg_setImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholderImage {
     if ([self isKindOfClass:[UIButton class]]) {
         UIButton *btn = (UIButton *)self;
         [btn sd_setImageWithURL:[NSURL URLWithString:url] forState:UIControlStateNormal placeholderImage:placeholderImage];
@@ -130,12 +130,12 @@
     }
 }
 
-- (void)hb_setImageWithURL:(NSString *)url placeholderImageName:(NSString *)placeholderImageName {
+- (void)xg_setImageWithURL:(NSString *)url placeholderImageName:(NSString *)placeholderImageName {
     UIImage *image = [UIImage imageNamed:placeholderImageName];
-    [self hb_setImageWithURL:url placeholderImage:image];
+    [self xg_setImageWithURL:url placeholderImage:image];
 }
 
-- (void)hb_setBackgroundImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholderImage {
+- (void)xg_setBackgroundImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholderImage {
     if ([self isKindOfClass:[UIButton class]]) {
         
         UIButton *btn = (UIButton *)self;
@@ -151,13 +151,13 @@
     }
 }
 
-- (void)hb_setBackgroundImageWithURL:(NSString *)url placeholderImageName:(NSString *)placeholderImageName {
+- (void)xg_setBackgroundImageWithURL:(NSString *)url placeholderImageName:(NSString *)placeholderImageName {
     UIImage *image = [UIImage imageNamed:placeholderImageName];
-    [self hb_setBackgroundImageWithURL:url placeholderImage:image];
+    [self xg_setBackgroundImageWithURL:url placeholderImage:image];
 }
 
-- (void)hb_setAvatarImageWithURL:(NSString *)url {
-    [self hb_setImageWithURL:url placeholderImageName:@"placeholder_houseDetails_head"];
+- (void)xg_setAvatarImageWithURL:(NSString *)url {
+    [self xg_setImageWithURL:url placeholderImageName:@"placeholder_houseDetails_head"];
 }
 
 + (void)setBorderWithView:(UIView *)view

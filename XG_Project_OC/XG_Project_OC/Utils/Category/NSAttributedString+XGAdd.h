@@ -35,8 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
  @param configArray 具体的配置
  @return 处理好的文字
  */
-+ (NSAttributedString *)setAttributedStringWithString:(NSString *)string
-                                          configArray:(NSArray<XGAttributedConfig *> *)configArray;
++ (NSAttributedString *)setAttributedString:(NSString *)string
+                                configArray:(NSArray<XGAttributedConfig *> *)configArray;
 
 /// 便捷构造方法
 + (NSAttributedString *)attributedTextWithString:(NSString *)string
