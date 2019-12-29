@@ -57,6 +57,43 @@
     return [self matchRegular:@"[0-9]*" matchString:string];
 }
 
+/// QQ号的匹配
+/// @param string 需要判断的字符串
++ (BOOL)isQQ:(NSString *)string {
+    return [self matchRegular:@"^[1-9]\\d{4,9}$" matchString:string];
+}
+
+/// 邮箱的匹配
+/// @param string 需要判断的字符串
++ (BOOL)isEmail:(NSString *)string {
+    return [self matchRegular:@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}" matchString:string];
+}
+
+/// 手机号的匹配
+/// @param string 需要判断的字符串
++ (BOOL)isPhoneNumber:(NSString *)string {
+    return [self matchRegular:@"^1[0-9]{10}$" matchString:string];
+}
+
+/// 中文的匹配
+/// @param string 需要判断的字符串
++ (BOOL)isChinese:(NSString *)string {
+    return [self matchRegular:@"[\u4E00-\u9FA5]*" matchString:string];
+}
+
+/// 邮箱或手机号或qq号的匹配
+/// @param string 需要判断的字符串
++ (BOOL)isEmailOrPhoneNumberOrQQ:(NSString *)string {
+    if ([self isEmail:string]) {
+        return YES;
+    } else if ([self isPhoneNumber:string]) {
+        return YES;
+    } else if ([self isQQ:string]) {
+        return YES;
+    }
+    return NO;
+}
+
 /// 过滤字符串中的是否有emoji
 /// @param string 需要判断的字符串
 + (BOOL)isEmoji:(NSString *)string {
@@ -127,6 +164,10 @@
             return [XGMatchManager isLettersOrNumbers:value];
         case XGMatchRuleTypeCustom:
             return [XGMatchManager matchCustomRegulars:customRules matchString:value];
+        case XGMatchRuleTypeEmailOrPhoneNumberOrQQ:
+            return [XGMatchManager isEmailOrPhoneNumberOrQQ:value];
+        case XGMatchRuleTypeCannotInputChinese:
+            return ![XGMatchManager isChinese:value] && ![XGMatchManager isEmoji:value];
         default:
             return ![XGMatchManager isEmoji:value];
     }
@@ -192,6 +233,12 @@
             break ;
         case XGMatchRuleTypeCustom:
             [self configTips:@"请输入合法的字符"];
+            break ;
+        case XGMatchRuleTypeEmailOrPhoneNumberOrQQ:
+            [self configTips:@"请输入合法的QQ或手机或邮箱"];
+            break ;
+        case XGMatchRuleTypeCannotInputChinese:
+            [self configTips:@"请勿输入中文或emoji表情"];
             break ;
         default:
             [self configTips:@"请勿输入emoji表情"];

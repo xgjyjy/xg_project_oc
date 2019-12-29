@@ -135,6 +135,13 @@
         imagePickerVc.showSelectedIndex = NO;
         imagePickerVc.isSelectOriginalPhoto = YES;
         imagePickerVc.modalPresentationStyle = UIModalPresentationFullScreen;
+        [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+            [self.selectedAssets removeAllObjects];
+            [self.selectedPhotos removeAllObjects];
+            [self.selectedAssets addObjectsFromArray:assets];
+            [self.selectedPhotos addObjectsFromArray:photos];
+            [self reloadDataSoure:photos.count > 0 ? XGFileFromTypeMultipleAlbum : XGFileFromTypeSingleAlbum];
+        }];
         [self.superController presentViewController:imagePickerVc animated:YES completion:nil];
     }
 }
@@ -224,7 +231,7 @@
     if (self.maxCount <= 0) {
         return;
     }
-    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:self.maxCount columnNumber:self.columnCount delegate:self pushPhotoPickerVc:YES];
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:self.maxCount columnNumber:3 delegate:self pushPhotoPickerVc:YES];
     imagePickerVc.allowTakePicture = NO;/** 在内部不显示拍照按钮 */
     imagePickerVc.allowTakeVideo = NO;/** 在内部不显示拍视频按 */
     imagePickerVc.allowPickingOriginalPhoto = NO;/** 隐藏原图按钮 */
@@ -350,7 +357,7 @@
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.flowLayout];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
-        _collectionView.backgroundColor = [UIColor grayColor];
+        _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
         [_collectionView registerClass:[XGPhotoBrowserCell class] forCellWithReuseIdentifier:NSStringFromClass([XGPhotoBrowserCell class])];
     }

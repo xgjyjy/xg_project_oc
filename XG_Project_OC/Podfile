@@ -13,7 +13,7 @@ def commonPod
     pod 'UMCShare/UI', '~>6.9.6'#友盟分享
     pod 'UMCShare/Social/ReducedWeChat', '~>6.9.6'# 集成微信(精简版0.2M)
     pod 'UMCAnalytics', '~>6.0.5'#友盟统计
-    pod 'UMCCommonLog', '~>1.0.0'#友盟日志(用于打印友盟埋点和crash日志)
+#    pod 'UMCCommonLog', '~>1.0.0'#友盟日志(用于打印友盟埋点和crash日志)
     pod 'JPush', '~>3.2.6'#极光推送
     pod 'Masonry', '~>1.1.0'
     pod 'SDCycleScrollView', '~>1.75'
@@ -21,7 +21,7 @@ def commonPod
     pod 'AFNetworking', '~>3.2.1'
     pod 'MBProgressHUD', '~>1.1.0'
     pod 'MJRefresh', '~>3.1.15.3'
-    pod 'IQKeyboardManager', '~>6.2.0'
+    pod 'IQKeyboardManager', '~>6.5.4'
     pod 'YYImage', '~>1.0.4'
     pod 'YYModel', '~>1.0.4'
     pod 'YYCategories', '~>1.0.4'

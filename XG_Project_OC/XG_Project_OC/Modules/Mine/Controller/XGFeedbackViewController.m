@@ -12,8 +12,10 @@
 #import "XGTextField.h"
 #import "UIButton+XGAdd.h"
 #import "XGEmailManager.h"
+#import "XGCustomTagView.h"
+#import "UIColor+XGAdd.h"
 
-@interface XGFeedbackViewController ()<XGPhotoBrowserViewDelegate,XGEmailManagerDelegate>
+@interface XGFeedbackViewController ()<XGPhotoBrowserViewDelegate,XGEmailManagerDelegate,XGTextViewDelegate,XGCustomTagViewDelegate>
 
 /// 容器
 @property (nonatomic, strong) UIScrollView *contentScrollView;
@@ -28,7 +30,7 @@
 @property (nonatomic, strong) XGPhotoBrowserView *pictureSelectorView;
 
 /// 反馈类型
-@property (nonatomic, strong) UIView *feedbackTypeView;
+@property (nonatomic, strong) XGCustomTagView *feedbackTypeView;
 
 /// 联系方式
 @property (nonatomic, strong) XGTextField *contactDetailsTextField;
@@ -65,7 +67,12 @@
 
 - (void)xg_messageSent:(XGEmailManager *)message {
     [self hideLoading];
-    [self showToast:@"提交成功"];
+    UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:nil message:@"提交成功!\n感谢您的反馈,我们会尽快处理!" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    [alertVc addAction:okAction];
+    [self presentViewController:alertVc animated:YES completion:nil];
 }
 
 - (void)xg_messageFailed:(XGEmailManager *)message error:(NSError *)error {
@@ -83,6 +90,19 @@
     [self.selectPhotos addObjectsFromArray:photos];
 }
 
+#pragma mark - XGTextViewDelegate
+
+- (void)xg_textViewDidChange:(XGTextView *)textView {
+    self.submitButton.backgroundColor = textView.text.length > 0 ? [UIColor xg_redColor] : [UIColor whiteColor];
+    self.submitButton.xg_normalTitleColor = textView.text.length > 0 ? [UIColor whiteColor] : [UIColor xg_lightGrayColor];
+}
+
+#pragma mark - XGCustomTagViewDelegate
+
+- (void)xg_customTagView:(XGCustomTagView *)tagView didSelectedTag:(XGTagModel *)tagModel {
+    self.feedbackTypeString = tagModel.tagText;
+}
+
 #pragma mark - TargetAction
 
 - (void)submitButtonAction {
@@ -94,6 +114,12 @@
         [self showToast:@"请选择反馈类型"];
         return;
     }
+    if (self.contactDetailsTextField.text.xg_isString &&
+        ![XGMatchManager isEmailOrPhoneNumberOrQQ:self.contactDetailsTextField.text]) {
+        [self showToast:@"请输入合法的QQ或手机或邮箱"];
+        return;
+    }
+    [self showLoading:@"提交中..."];
     /** 将图片转成data  */
     NSMutableArray *imageMuDatas = [NSMutableArray array];
     NSMutableArray *imageMuNames = [NSMutableArray array];
@@ -108,12 +134,11 @@
     /** 发送邮件 */
     NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
     NSString *contact = self.contactDetailsTextField.text.length > 0 ? self.contactDetailsTextField.text : @"未填写";
-    [XGEmailManager shareInstance].emailSubject = [NSString stringWithFormat:@"[%@][%@][联系方式:%@]",appName,self.feedbackTypeString,contact];
+    NSString *content = [NSString stringWithFormat:@"[%@][联系方式:%@]\n内容:%@",self.feedbackTypeString,contact,self.inputTextView.text];
+    [XGEmailManager shareInstance].emailSubject = [NSString stringWithFormat:@"[%@]的意见反馈",appName];
     [XGEmailManager shareInstance].delegate = self;
-    [[XGEmailManager shareInstance] sendEmailWithContent:self.inputTextView.text imageDatas:imageMuDatas imageNames:imageMuNames];
+    [[XGEmailManager shareInstance] sendEmailWithContent:content imageDatas:imageMuDatas imageNames:imageMuNames];
 }
-
-#pragma mark - PublicMethods
 
 #pragma mark - PrivateMethods
 
@@ -135,7 +160,8 @@
         make.leading.trailing.bottom.offset(0);
     }];
     [self.opinionOrSuggestionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.leading.offset(15);
+        make.top.offset(0);
+        make.leading.offset(15);
         make.width.equalTo(self.contentScrollView.mas_width).offset(-30);
     }];
     [self.inputTextView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -170,103 +196,123 @@
 
 - (UIScrollView *)contentScrollView {
     if (!_contentScrollView) {
-        _contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
+        _contentScrollView = ({
+            UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
+            scrollView;
+        });
     }
     return _contentScrollView;
 }
 
 - (UIView *)opinionOrSuggestionView {
     if (!_opinionOrSuggestionView) {
-        _opinionOrSuggestionView = [[UIView alloc] initWithFrame:CGRectZero];
-        _opinionOrSuggestionView.backgroundColor = [UIColor whiteColor];
-        _opinionOrSuggestionView.layer.masksToBounds = YES;
-        _opinionOrSuggestionView.layer.cornerRadius = 2;
-        _opinionOrSuggestionView.layer.borderColor = [UIColor xg_separatorLineColor].CGColor;
-        _opinionOrSuggestionView.layer.borderWidth = 0.5;
+        _opinionOrSuggestionView = ({
+            UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
+            view.backgroundColor = [UIColor whiteColor];
+            view.layer.masksToBounds = YES;
+            view.layer.cornerRadius = 2;
+            view.layer.borderColor = [UIColor xg_separatorLineColor].CGColor;
+            view.layer.borderWidth = 0.5;
+            view;
+        });
     }
     return _opinionOrSuggestionView;
 }
 
 - (XGTextView *)inputTextView {
     if (!_inputTextView) {
-        _inputTextView = [[XGTextView alloc] initWithFrame:CGRectZero];
-        _inputTextView.backgroundColor = self.opinionOrSuggestionView.backgroundColor;
-        _inputTextView.placeholder = @"请填写您的意见或建议!";
-        _inputTextView.maxCount = 1000;
+        _inputTextView = ({
+            XGTextView *textView = [[XGTextView alloc] initWithFrame:CGRectZero];
+            textView.backgroundColor = self.opinionOrSuggestionView.backgroundColor;
+            textView.placeholder = @"请填写您的意见或建议!";
+            textView.isHideMaxCount = YES;
+            textView.maxCount = 1000;
+            textView.delegate = self;
+            textView;
+        });
     }
     return _inputTextView;
 }
 
 - (XGPhotoBrowserView *)pictureSelectorView {
     if (!_pictureSelectorView) {
-        _pictureSelectorView = [[XGPhotoBrowserView alloc] initWithFrame:CGRectZero];
-        _pictureSelectorView.superController = self;
-        _pictureSelectorView.delegate = self;
-        _pictureSelectorView.backgroundColor = [UIColor greenColor];
+        _pictureSelectorView = ({
+            XGPhotoBrowserView *photoBrowserView = [[XGPhotoBrowserView alloc] initWithFrame:CGRectZero];
+            photoBrowserView.maxCount = 5;
+            photoBrowserView.columnCount = 5;
+            photoBrowserView.superController = self;
+            photoBrowserView.delegate = self;
+            photoBrowserView;
+        });
     }
     return _pictureSelectorView;
 }
 
-- (UIView *)feedbackTypeView {
+- (XGCustomTagView *)feedbackTypeView {
     if (!_feedbackTypeView) {
-        _feedbackTypeView = [[UIView alloc] initWithFrame:CGRectZero];
-        _feedbackTypeView.backgroundColor = [UIColor whiteColor];
-        _feedbackTypeView.layer.masksToBounds = YES;
-        _feedbackTypeView.layer.cornerRadius = 2;
-        _feedbackTypeView.layer.borderColor = [UIColor xg_separatorLineColor].CGColor;
-        _feedbackTypeView.layer.borderWidth = 0.5;
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-        label.text = @"请选择反馈类型";
-        label.textColor = [UIColor xg_blackColor];
-        label.font = [UIFont xg_pingFangFontOfSize:15];
-        [_feedbackTypeView addSubview:label];
-        [label sizeToFit];
-        [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.top.offset(15);
-        }];
-        
-        UIView *tagView = [[UIView alloc] initWithFrame:CGRectZero];
-        tagView.backgroundColor = [UIColor yellowColor];
-        [_feedbackTypeView addSubview:tagView];
-        [tagView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(label.mas_bottom).offset(15);
-            make.leading.offset(15);
-            make.trailing.bottom.offset(-15);
-            make.height.equalTo(@50);
-        }];
+        _feedbackTypeView = ({
+            XGCustomTagView *tagView = [[XGCustomTagView alloc] initWithFrame:CGRectZero];
+            tagView.delegate = self;
+            tagView.backgroundColor = [UIColor whiteColor];
+            tagView.text = @"请选择反馈类型";
+            tagView.titleLabel.textColor = [UIColor xg_lightGrayColor];
+            tagView.titleLabel.font = [UIFont xg_pingFangFontOfSize:15];
+            tagView.layer.masksToBounds = YES;
+            tagView.layer.cornerRadius = 2;
+            tagView.layer.borderColor = [UIColor xg_separatorLineColor].CGColor;
+            tagView.layer.borderWidth = 0.5;
+            XGTagConfig *config = [[XGTagConfig alloc] init];
+            config.tagType = XGTagTypeFixedSize;
+            config.lineSpacing = 15;
+            config.interitemSpacing = 15;
+            CGFloat tagWidth = (kScreenWidth - (3 - 1) * config.interitemSpacing - 15 * 4) / 3;
+            config.fixedSize = CGSizeMake(tagWidth, 25);
+            config.tagFont = [UIFont xg_pingFangFontOfSize:15];
+            config.normalTextColor = [UIColor xg_blackColor];
+            config.selectedTextColor = [UIColor xg_redColor];
+            config.normalBgColor = [UIColor xg_colorWithHexString:@"#F1F1F1"];
+            config.selectedBgColor = [[UIColor xg_redColor] colorWithAlphaComponent:0.05];
+            [tagView displayTagViewWithTextArray:@[@"程序bug",@"功能建议",@"内容意见",@"广告问题",@"网络问题",@"其他"] tagConfig:config];
+            tagView;
+        });
     }
     return _feedbackTypeView;
 }
 
 - (XGTextField *)contactDetailsTextField {
     if (!_contactDetailsTextField) {
-        _contactDetailsTextField = [[XGTextField alloc] initWithFrame:CGRectZero];
-        _contactDetailsTextField.matchRuleType = 0;
-        _contactDetailsTextField.backgroundColor = [UIColor whiteColor];
-        _contactDetailsTextField.placeholder = @"请填写您的QQ或手机或邮箱";
-        _contactDetailsTextField.maxCount = 5;
-        _contactDetailsTextField.layer.masksToBounds = YES;
-        _contactDetailsTextField.layer.cornerRadius = 2;
-        _contactDetailsTextField.layer.borderColor = [UIColor xg_separatorLineColor].CGColor;
-        _contactDetailsTextField.layer.borderWidth = 0.5;
-        
-        UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 1)];
-        _contactDetailsTextField.leftView = leftView;
-        _contactDetailsTextField.leftViewMode = UITextFieldViewModeAlways;
+        _contactDetailsTextField = ({
+            XGTextField *textFiled = [[XGTextField alloc] initWithFrame:CGRectZero];
+            textFiled.matchRuleType = XGMatchRuleTypeCannotInputChinese;
+            textFiled.backgroundColor = [UIColor whiteColor];
+            textFiled.placeholder = @"请填写您的QQ或手机或邮箱";
+            textFiled.maxCount = 30;
+            textFiled.layer.masksToBounds = YES;
+            textFiled.layer.cornerRadius = 2;
+            textFiled.layer.borderColor = [UIColor xg_separatorLineColor].CGColor;
+            textFiled.layer.borderWidth = 0.5;
+            UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 1)];
+            textFiled.leftView = leftView;
+            textFiled.leftViewMode = UITextFieldViewModeAlways;
+            textFiled;
+        });
     }
     return _contactDetailsTextField;
 }
 
 - (UIButton *)submitButton {
     if (!_submitButton) {
-        _submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _submitButton.backgroundColor = [UIColor whiteColor];
-        _submitButton.xg_normalTitle = @"提交";
-        _submitButton.xg_normalTitleColor = [UIColor xg_blackColor];
-        _submitButton.titleLabel.font = [UIFont xg_pingFangFontOfSize:15];
-        _submitButton.layer.masksToBounds = YES;
-        _submitButton.layer.cornerRadius = 2;
-        [_submitButton xg_addTapAction:@selector(submitButtonAction) target:self];
+        _submitButton = ({
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            button.backgroundColor = [UIColor whiteColor];
+            button.xg_normalTitle = @"提交";
+            button.xg_normalTitleColor = [UIColor lightGrayColor];
+            button.titleLabel.font = [UIFont xg_pingFangFontOfSize:15];
+            button.layer.masksToBounds = YES;
+            button.layer.cornerRadius = 2;
+            [button xg_addTapAction:@selector(submitButtonAction) target:self];
+            button;
+        });
     }
     return _submitButton;
 }

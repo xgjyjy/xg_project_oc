@@ -102,7 +102,7 @@
         make.edges.equalTo(self.contentView);
     }];
     [self.deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(36, 36));
+        make.size.mas_equalTo(CGSizeMake(30, 30));
         make.top.trailing.offset(0);
     }];
 }

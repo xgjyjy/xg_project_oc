@@ -30,14 +30,14 @@
 #pragma mark - SKPSMTPMessageDelegate
 
 - (void)messageSent:(SKPSMTPMessage *)message {
-    NSLog(@"发送邮件成功了");
+//    NSLog(@"发送邮件成功了");
     if ([self.delegate respondsToSelector:@selector(xg_messageSent:)]) {
         [self.delegate xg_messageSent:self];
     }
 }
 
 - (void)messageFailed:(SKPSMTPMessage *)message error:(NSError *)error {
-    NSLog(@"发送邮件失败了");
+//    NSLog(@"发送邮件失败了");
     if ([self.delegate respondsToSelector:@selector(xg_messageFailed:error:)]) {
         [self.delegate xg_messageFailed:self error:error];
     }

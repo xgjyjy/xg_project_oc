@@ -22,7 +22,7 @@ PODS:
   - AMapSearch-NO-IDFA (6.9.0):
     - AMapFoundation-NO-IDFA (~> 1.4)
   - Bugly (2.5.2)
-  - IQKeyboardManager (6.2.1)
+  - IQKeyboardManager (6.5.4)
   - JCore (2.1.4)
   - JPush (3.2.6):
     - JCore (< 3.0.0, >= 2.0.0)
@@ -65,7 +65,7 @@ DEPENDENCIES:
   - AMapLocation-NO-IDFA (~> 2.6.2)
   - AMapSearch-NO-IDFA (~> 6.9.0)
   - Bugly (~> 2.5.0)
-  - IQKeyboardManager (~> 6.2.0)
+  - IQKeyboardManager (~> 6.5.4)
   - JPush (~> 3.2.6)
   - Masonry (~> 1.1.0)
   - MBProgressHUD (~> 1.1.0)
@@ -122,7 +122,7 @@ SPEC CHECKSUMS:
   AMapLocation-NO-IDFA: f22a480573aa18c521946f13d49521f042a7dca6
   AMapSearch-NO-IDFA: 264999e6c149383a8f164c2fe49b51513e93d674
   Bugly: dbac48b55ad469a97cc4321045cd50df8f63d44f
-  IQKeyboardManager: 964638372b4a61892cc74fdfa6fd26de8c9464a2
+  IQKeyboardManager: 72b359cd7e777e3a984cedbe05f8da45320cbb63
   JCore: d345c049141877eb61c33011455fdb5fcab1673f
   JPush: 41dd48a69bd8c08abc692dc7f2b23c0fb281471f
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -143,6 +143,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: f14cae67f21af0baf24414ebcd611327fc02a629
+PODFILE CHECKSUM: 55c9892caef4ebe2d11be8fce7afe44a10efccba
 
 COCOAPODS: 1.8.4

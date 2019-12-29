@@ -24,7 +24,7 @@
 #pragma mark - Toast
 
 - (void)showToast:(NSString *)text {
-    [self showToastWithText:text margin:15 font:15 centerOffsetY:[self getContentY]];
+    [self showToastWithText:text margin:15 font:15 centerOffsetY:[self getContentY:YES]];
 }
 
 - (void)hideToast {
@@ -60,14 +60,22 @@
         
         [hud showAnimated:YES];
         hud.userInteractionEnabled = NO;
-        [hud hideAnimated:YES afterDelay:3.5];
+        [hud hideAnimated:YES afterDelay:1.5];
     });
 }
 
 #pragma mark - Loading
 
 - (void)showLoading {
-    [self showLoadingWithText:@"加载中..." frame:CGRectMake(0, [self getContentY], kScreenWidth, kScreenHeight)];
+    CGFloat y = [self getContentY:NO];
+    CGFloat h = kScreenHeight - y;
+    [self showLoadingWithText:@"加载中..." frame:CGRectMake(0, y, kScreenWidth, h)];
+}
+
+- (void)showLoading:(NSString *)text {
+    CGFloat y = [self getContentY:NO];
+    CGFloat h = kScreenHeight - y;
+    [self showLoadingWithText:text frame:CGRectMake(0, y, kScreenWidth, h)];
 }
 
 - (void)hideLoading {
@@ -155,11 +163,11 @@
     });
 }
 
-- (CGFloat)getContentY {
-    CGFloat y = (kScreenHeight - kContentY) * 0.5;
+- (CGFloat)getContentY:(BOOL)isToast {
+    CGFloat y = 0;
 #if HasBaseViewContrller
-    if ([self isKindOfClass:[XGBaseViewController class]] && ((XGBaseViewController *)self).navigationBarView.hidden) {
-        y = 0;
+    if ([self isKindOfClass:[XGBaseViewController class]] && !((XGBaseViewController *)self).navigationBarView.hidden) {
+        y = isToast ? (kScreenHeight - kContentY) * 0.5 : kContentY;
     }
 #endif
     if ([self isDisplayKeyboard]) {

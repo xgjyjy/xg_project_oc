@@ -80,6 +80,14 @@
 		AF0B2A07239905D500C17ED9 /* XGMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0B2A05239905D500C17ED9 /* XGMessageViewController.m */; };
 		AF0B2A08239905D500C17ED9 /* XGMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0B2A05239905D500C17ED9 /* XGMessageViewController.m */; };
 		AF0B2A09239905D500C17ED9 /* XGMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0B2A05239905D500C17ED9 /* XGMessageViewController.m */; };
+		AF1E164C23B6E98F000CFD81 /* XGCustomTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E164923B6E98E000CFD81 /* XGCustomTagView.m */; };
+		AF1E164D23B6E98F000CFD81 /* XGCustomTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E164923B6E98E000CFD81 /* XGCustomTagView.m */; };
+		AF1E164E23B6E98F000CFD81 /* XGCustomTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E164923B6E98E000CFD81 /* XGCustomTagView.m */; };
+		AF1E164F23B6E98F000CFD81 /* XGCustomTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E164923B6E98E000CFD81 /* XGCustomTagView.m */; };
+		AF1E165023B6E98F000CFD81 /* XGTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E164A23B6E98E000CFD81 /* XGTagView.m */; };
+		AF1E165123B6E98F000CFD81 /* XGTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E164A23B6E98E000CFD81 /* XGTagView.m */; };
+		AF1E165223B6E98F000CFD81 /* XGTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E164A23B6E98E000CFD81 /* XGTagView.m */; };
+		AF1E165323B6E98F000CFD81 /* XGTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1E164A23B6E98E000CFD81 /* XGTagView.m */; };
 		AF5DF50E239DE07F007B0EAD /* XGMineListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF5DF50D239DE07F007B0EAD /* XGMineListCell.m */; };
 		AF5DF50F239DE07F007B0EAD /* XGMineListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF5DF50D239DE07F007B0EAD /* XGMineListCell.m */; };
 		AF5DF510239DE07F007B0EAD /* XGMineListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF5DF50D239DE07F007B0EAD /* XGMineListCell.m */; };
@@ -263,6 +271,10 @@
 		AF0B29FF239905BC00C17ED9 /* XGLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XGLoginViewController.m; sourceTree = "<group>"; };
 		AF0B2A04239905D500C17ED9 /* XGMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XGMessageViewController.h; sourceTree = "<group>"; };
 		AF0B2A05239905D500C17ED9 /* XGMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XGMessageViewController.m; sourceTree = "<group>"; };
+		AF1E164823B6E98E000CFD81 /* XGTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGTagView.h; sourceTree = "<group>"; };
+		AF1E164923B6E98E000CFD81 /* XGCustomTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGCustomTagView.m; sourceTree = "<group>"; };
+		AF1E164A23B6E98E000CFD81 /* XGTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGTagView.m; sourceTree = "<group>"; };
+		AF1E164B23B6E98F000CFD81 /* XGCustomTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGCustomTagView.h; sourceTree = "<group>"; };
 		AF5DF50C239DE07F007B0EAD /* XGMineListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XGMineListCell.h; sourceTree = "<group>"; };
 		AF5DF50D239DE07F007B0EAD /* XGMineListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XGMineListCell.m; sourceTree = "<group>"; };
 		AF5DF512239DE761007B0EAD /* XGSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XGSettingViewController.h; sourceTree = "<group>"; };
@@ -532,6 +544,17 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		AF1E164723B6E980000CFD81 /* CustomTagView */ = {
+			isa = PBXGroup;
+			children = (
+				AF1E164B23B6E98F000CFD81 /* XGCustomTagView.h */,
+				AF1E164923B6E98E000CFD81 /* XGCustomTagView.m */,
+				AF1E164823B6E98E000CFD81 /* XGTagView.h */,
+				AF1E164A23B6E98E000CFD81 /* XGTagView.m */,
+			);
+			path = CustomTagView;
+			sourceTree = "<group>";
+		};
 		AFA223DC23AEFF27004F569C /* InputViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,6 +670,7 @@
 		AFAF5177239786D200128B0F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AF1E164723B6E980000CFD81 /* CustomTagView */,
 				AFA2240D23AF315C004F569C /* PhotoBrowser */,
 				AFA223DC23AEFF27004F569C /* InputViews */,
 				AF0B29EB2399041F00C17ED9 /* PrivacyPolicy */,
@@ -1092,8 +1116,10 @@
 				AF0B29A42398A78900C17ED9 /* NSArray+XGAdd.m in Sources */,
 				AF0B2A06239905D500C17ED9 /* XGMessageViewController.m in Sources */,
 				AFF198CE23AB2EEB000D56C0 /* XGEmailManager.m in Sources */,
+				AF1E164C23B6E98F000CFD81 /* XGCustomTagView.m in Sources */,
 				AF0B29B72398AF7400C17ED9 /* UIView+XGAdd.m in Sources */,
 				AF0B29E72398E6AD00C17ED9 /* UIImage+XGAdd.m in Sources */,
+				AF1E165023B6E98F000CFD81 /* XGTagView.m in Sources */,
 				AF0B29F42399059E00C17ED9 /* XGHomeViewController.m in Sources */,
 				AFEE7D9423ADF0EF004BFE40 /* XGAboutUsViewController.m in Sources */,
 				AFEE7DAB23AE0A83004BFE40 /* XGUserAgreementViewController.m in Sources */,
@@ -1143,8 +1169,10 @@
 				AF0B29D02398E36100C17ED9 /* UILabel+XGAdd.m in Sources */,
 				AF0B29BE2398B09100C17ED9 /* NSURL+XGAdd.m in Sources */,
 				AFF198CF23AB2EEB000D56C0 /* XGEmailManager.m in Sources */,
+				AF1E164D23B6E98F000CFD81 /* XGCustomTagView.m in Sources */,
 				AF0B29CA2398E30600C17ED9 /* UIFont+XGAdd.m in Sources */,
 				AFAF519F2397931500128B0F /* XGNavigationController.m in Sources */,
+				AF1E165123B6E98F000CFD81 /* XGTagView.m in Sources */,
 				AF0B29A52398A78900C17ED9 /* NSArray+XGAdd.m in Sources */,
 				AFEE7D9523ADF0EF004BFE40 /* XGAboutUsViewController.m in Sources */,
 				AFEE7DAC23AE0A83004BFE40 /* XGUserAgreementViewController.m in Sources */,
@@ -1194,8 +1222,10 @@
 				AF0B29D12398E36100C17ED9 /* UILabel+XGAdd.m in Sources */,
 				AF0B29BF2398B09100C17ED9 /* NSURL+XGAdd.m in Sources */,
 				AFF198D023AB2EEB000D56C0 /* XGEmailManager.m in Sources */,
+				AF1E164E23B6E98F000CFD81 /* XGCustomTagView.m in Sources */,
 				AF0B29CB2398E30600C17ED9 /* UIFont+XGAdd.m in Sources */,
 				AFAF51A02397931500128B0F /* XGNavigationController.m in Sources */,
+				AF1E165223B6E98F000CFD81 /* XGTagView.m in Sources */,
 				AF0B29A62398A78900C17ED9 /* NSArray+XGAdd.m in Sources */,
 				AFEE7D9623ADF0EF004BFE40 /* XGAboutUsViewController.m in Sources */,
 				AFEE7DAD23AE0A83004BFE40 /* XGUserAgreementViewController.m in Sources */,
@@ -1245,8 +1275,10 @@
 				AF0B29A72398A78900C17ED9 /* NSArray+XGAdd.m in Sources */,
 				AF0B2A09239905D500C17ED9 /* XGMessageViewController.m in Sources */,
 				AFF198D123AB2EEB000D56C0 /* XGEmailManager.m in Sources */,
+				AF1E164F23B6E98F000CFD81 /* XGCustomTagView.m in Sources */,
 				AF0B29BA2398AF7400C17ED9 /* UIView+XGAdd.m in Sources */,
 				AF0B29EA2398E6AD00C17ED9 /* UIImage+XGAdd.m in Sources */,
+				AF1E165323B6E98F000CFD81 /* XGTagView.m in Sources */,
 				AF0B29F72399059E00C17ED9 /* XGHomeViewController.m in Sources */,
 				AFEE7D9723ADF0EF004BFE40 /* XGAboutUsViewController.m in Sources */,
 				AFEE7DAE23AE0A83004BFE40 /* XGUserAgreementViewController.m in Sources */,

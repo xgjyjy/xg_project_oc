@@ -27,6 +27,12 @@ typedef NS_ENUM(NSUInteger, XGMatchRuleType) {
     /// 只能输入字母和数字(使用场景:验证码,身份证等)
     XGMatchRuleTypeLettersAndNumbers,
     
+    /// 只能输入QQ号或邮箱或手机号(使用场景:联系方式等)
+    XGMatchRuleTypeEmailOrPhoneNumberOrQQ,
+    
+    /// 不能输入中文
+    XGMatchRuleTypeCannotInputChinese,
+    
     /// 自定义过滤规则(正则)
     XGMatchRuleTypeCustom
 };
@@ -57,6 +63,22 @@ typedef NS_ENUM(NSUInteger, XGMatchRuleType) {
 /// 过滤字符串中的是否有emoji
 /// @param string 需要判断的字符串
 + (BOOL)isEmoji:(NSString *)string;
+
+/// QQ号的匹配
+/// @param string 需要判断的字符串
++ (BOOL)isQQ:(NSString *)string;
+
+/// 邮箱的匹配
+/// @param string 需要判断的字符串
++ (BOOL)isEmail:(NSString *)string;
+
+/// 手机号的匹配
+/// @param string 需要判断的字符串
++ (BOOL)isPhoneNumber:(NSString *)string;
+
+/// 邮箱或手机号或qq号的匹配
+/// @param string 需要判断的字符串
++ (BOOL)isEmailOrPhoneNumberOrQQ:(NSString *)string;
 
 /// 匹配自定义正则
 /// @param regulars 正则

@@ -22,6 +22,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// 显示loading
 - (void)showLoading;
 
+/// 显示loading
+/// @param text loading的文本
+- (void)showLoading:(NSString *)text;
+
 /// 隐藏loading
 - (void)hideLoading;
 

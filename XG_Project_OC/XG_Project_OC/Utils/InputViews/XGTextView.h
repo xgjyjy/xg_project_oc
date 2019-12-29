@@ -61,7 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// TextView的占位文字
 @property (nonatomic,   copy) NSString * _Nullable placeholder;
 
-/// TextView的占位文字颜色
+/// TextView的占位文字颜色(默认xg_lightGrayColor)
 @property (nonatomic, strong) UIColor *placeholderColor;
 
 /// TextView的文本

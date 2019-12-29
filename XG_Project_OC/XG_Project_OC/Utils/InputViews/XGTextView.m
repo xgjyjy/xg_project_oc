@@ -223,8 +223,20 @@
     _isHideMaxCount = isHideMaxCount;
     self.countLabel.hidden = isHideMaxCount;
     if (isHideMaxCount) {
+        [self.countLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            /** 移除约束  */
+        }];
         [self.inputTextView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self);
+        }];
+    } else {
+        [self.inputTextView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.leading.top.trailing.equalTo(self);
+        }];
+        [self.countLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.inputTextView.mas_bottom);
+            make.height.mas_equalTo(13);
+            make.trailing.bottom.offset(-10);
         }];
     }
 }
