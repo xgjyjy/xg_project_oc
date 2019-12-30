@@ -20,20 +20,6 @@
                ReferencedContainer = "container:XG_Project_OC.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AFAF515F2397851900128B0F"
-               BuildableName = "XG_Project_OC_Dev.app"
-               BlueprintName = "XG_Project_OC_Dev"
-               ReferencedContainer = "container:XG_Project_OC.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

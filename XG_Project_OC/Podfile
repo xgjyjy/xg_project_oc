@@ -28,8 +28,6 @@ def commonPod
     pod 'YYText', '~>1.0.7'
     #pod 'WCDB', '~>1.0.7.5'#数据库
     pod 'Bugly', '~>2.5.0'#腾讯crash日志上传
-    #pod 'NIMSDK_LITE', '~>5.8.0'#网易云信精简版(不含直播等音视频功能)
-    #pod 'M80AttributedLabel', '~>1.7.1'
     pod 'TZImagePickerController', '~>3.2.7'#图片选择器
     pod 'skpsmtpmessage', '~>0.0.1'#发送邮件
     pod 'UITextView+Placeholder', '~>1.3.3'
@@ -39,6 +37,6 @@ target 'XG_Project_OC' do
   commonPod
 end
 
-target 'XG_Project_OC_Dev' do
+target 'XG_Project_OC_Debug' do
   commonPod
 end
