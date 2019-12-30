@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		54E445FFE2518B9287C42599 /* libPods-XG_Project_OC_Debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 493AB7140F790E9C38691AF9 /* libPods-XG_Project_OC_Debug.a */; };
-		7FE0500CCDC7B220DC8CC9A4 /* libPods-XG_Project_OC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F042D88254FE9C94BAFAF033 /* libPods-XG_Project_OC.a */; };
+		7FE0500CCDC7B220DC8CC9A4 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		AF0B299E23989BDB00C17ED9 /* NSObject+XGAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0B299D23989BDB00C17ED9 /* NSObject+XGAdd.m */; };
 		AF0B299F23989BDB00C17ED9 /* NSObject+XGAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0B299D23989BDB00C17ED9 /* NSObject+XGAdd.m */; };
 		AF0B29A023989BDB00C17ED9 /* NSObject+XGAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0B299D23989BDB00C17ED9 /* NSObject+XGAdd.m */; };
@@ -359,7 +359,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FE0500CCDC7B220DC8CC9A4 /* libPods-XG_Project_OC.a in Frameworks */,
+				7FE0500CCDC7B220DC8CC9A4 /* (null) in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1347,7 +1347,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xiaoge.iphone.XG-Project-OC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xiaoge.iphone.XG-Project-OC-Debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1366,7 +1366,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xiaoge.iphone.XG-Project-OC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xiaoge.iphone.XG-Project-OC-Debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
